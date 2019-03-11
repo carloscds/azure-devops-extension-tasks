@@ -51,6 +51,7 @@
   "dataSourceBindings": [
     {
       "target": "version",
+      "endpointId": "registry.npmjs.com",
       "endpointUrl": "http://registry.npmjs.com/tfx-cli/",
       "resultSelector": "jsonpath:$.versions[*]",
       "requestContent": "application/json",
