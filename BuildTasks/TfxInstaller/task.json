@@ -27,11 +27,17 @@
   "inputs": [
     {
       "name": "version",
-      "type": "string",
+      "type": "pickList",
       "label": "Version",
       "defaultValue": "v0.6.x",
       "helpMarkDown": "",
-      "required": true
+      "required": true,
+      "properties": {
+        "EditableOptions": "True"
+      },
+      "options": {
+        "v0.6.x": "v0.6.x"
+      }
     },
     {
       "name": "checkLatest",
@@ -40,6 +46,15 @@
       "defaultValue": "true",
       "required": false,
       "helpMarkDown": "Automatically download the latest version."
+    }
+  ],
+  "dataSourceBindings": [
+    {
+      "target": "version",
+      "endpointUrl": "http://registry.npmjs.com/tfx-cli/",
+      "resultSelector": "jsonpath:$.versions[*]",
+      "requestContent": "application/json",
+      "resultTemplate": "{\"Value\": \"v{{{version}}}\", \"DisplayValue\": \"v{{{version}}}\" }"
     }
   ],
   "execution": {
